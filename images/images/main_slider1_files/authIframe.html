@@ -1,0 +1,42 @@
+
+<!-- saved from url=(0337)https://nav.porsche.com/00BC524/auth/authIframe.html?domain=https%3A%2F%2Fidentity.porsche.com&clientId=fFp1mRfLwaUkbrAFv7QYeubkPofNYvWY&redirect_uri=https%3A%2F%2Fnav.porsche.com%2F00BC524%2Fauth%2FauthIframe.html&audience=https%3A%2F%2Fapi.porsche.com&scope=openid%20pid%3Auser_profile.name%3Aread%20pid%3Auser_profile.porscheid%3Aread -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+  <title>Auth-Page</title>
+  <script src="./auth0-spa-js.production.js.&#45796;&#50868;&#47196;&#46300;"></script>
+  <script type="application/javascript">
+    var params = window.location.search
+      .substring(1)
+      .split('&')
+      .map(function (item) {
+        return item.split('=');
+      })
+      .reduce(function (result, item) {
+        result[item[0]] = decodeURIComponent(item[1]);
+        return result;
+      }, {});
+
+    const { clientId, client_id, domain, ...authorizationParams } = params;
+
+    try {
+      var auth0Client = new auth0.Auth0Client({ clientId: clientId || client_id, domain, authorizationParams });
+
+      auth0Client
+        .getTokenSilently()
+        .then(function (token) {
+          window.parent.postMessage({ token, error: null }, '*');
+        })
+        .catch(function (err) {
+          window.parent.postMessage({ token: null, error: JSON.stringify(err) }, '*');
+        });
+    } catch (err) {
+      window.parent.postMessage({ token: null, error: JSON.stringify(err) }, '*');
+    }
+  </script>
+</head>
+
+<body>
+<h1>Auth-Page</h1>
+<p>This page exists so that a redirect can be safely made to it from the ping-federate / ciam proxy.</p>
+
+
+</body></html>
