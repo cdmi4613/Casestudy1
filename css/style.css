@@ -416,7 +416,7 @@ header .menu_bg.active {
 	object-fit: cover;
   }
 
-  #main_slider .textbox{
+#main_slider .textbox{
     position: absolute;
     left: -20%;
 	bottom: -5%;
@@ -426,12 +426,19 @@ header .menu_bg.active {
     z-index: 10000;
 }
 
-#main_slider .textbox strong{
+#main_slider .textbox br{
+	display: none;
+}
+
+#main_slider .textbox p.title{
 	font-size: 55px;
 	font-weight: 600;
 }
-
-#main_slider .textbox p{
+#main_slider .textbox span.product{
+	font-size: 16px;
+	font-weight: 400;
+}
+#main_slider .p.subtitle{
 	padding-top: 20px;
 	font-size: 18px;
 	font-weight: 400;
@@ -443,8 +450,8 @@ header .menu_bg.active {
 
 #main_slider .textbox .ar a img{
 	position: absolute;
-	right: -5%;
-	top: 10%;
+    right: -8%;
+    top: 0%;
 	width: 70px;
 	height: 70px;
 }
@@ -646,14 +653,17 @@ header .menu_bg.active {
 }
 #main_slider .textbox {
     position: absolute;
-    left: 30px;
+    left: 20px;
     /* bottom: 700px; */
-    top: 80px;
-    background: none;
+    top: 20px;
+    background: #fff;
     color: #111;
     width: 440px;
     height: 220px;
     z-index: 10000;
+}
+#main_slider .textbox br{
+	display: block;
 }
 	#main_slider .swiper-container .swiper-wrapper .swiper-slide img{
 		display: none;
@@ -710,7 +720,18 @@ header .menu_bg.active {
 
 
 }
+#main_slider .textbox .ar a img {
+	top: 190px;
 }
+}
+
+@media only screen and (max-width: 400px){
+	#main_slider .textbox span.product{
+		display: none;
+	}
+
+}
+
 
 
 
